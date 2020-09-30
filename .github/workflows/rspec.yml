@@ -1,0 +1,35 @@
+name: RSpec Test Suite
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v1
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.6
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.18.3
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}${{ hashFiles('**/package.json')
+          }}"
+        restore-keys: "${{ runner.OS }}-yarn-cache-\n"
+    - name: Install system packages
+      run: |
+        sudo apt-get install libsqlite3-dev
+        command -v bundler || gem install bundler
+    - name: Install gems
+      run: bundle install --jobs $(nproc) --retry 3
+    - name: Install Yarn packages
+      run: yarn install
+    - name: Run RSpec test suite
+      run: bundle exec rspec spec
