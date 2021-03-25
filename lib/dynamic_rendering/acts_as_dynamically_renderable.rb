@@ -41,7 +41,7 @@ module DynamicRendering
     private
 
     def request_suitable_for_dynamic_rendering?
-      request.user_agent.match?(USE_DYNAMIC_RENDERING_FOR_USER_AGENTS)
+      USE_DYNAMIC_RENDERING_FOR_USER_AGENTS.match?(request.user_agent)
     end
 
     def dynamic_rendering_viewport
@@ -51,7 +51,7 @@ module DynamicRendering
     end
 
     def dynamic_rendering_request_from_mobile_crawler?
-      request.user_agent.match?(MOBILE_USER_AGENT)
+      MOBILE_USER_AGENT.match?(request.user_agent)
     end
 
     def response_suitable_for_dynamic_rendering?
