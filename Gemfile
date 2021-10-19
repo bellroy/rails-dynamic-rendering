@@ -9,7 +9,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rb-fsevent', require: false
   gem 'rb-readline'
-  gem 'reek'
   gem 'rails', '>= 6.0.0'
   gem 'rspec'
   gem 'rubocop-rspec'
@@ -17,7 +16,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'sqlite3'
   gem 'stackprof'
-  gem 'timecop'
 end
 
 group :test do

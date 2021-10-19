@@ -13,10 +13,11 @@
 # rspec failure tracking
 .rspec_status
 
-/shell.nix
 /tags
 
 *.log
 .DS_Store
 
 .ruby-gemset
+.direnv
+.envrc
