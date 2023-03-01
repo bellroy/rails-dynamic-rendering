@@ -1,3 +1,5 @@
+**N.B. The Bellroy technology team are transitioning away from Ruby as their primary programming language, and will not longer actively update this repository. Contact us if you'd like to take over as the primary maintainer.**
+
 ![dynamic-rendering-logo](https://user-images.githubusercontent.com/2643026/94681334-28e48f80-031b-11eb-8dd5-010e6e23500c.png)
 
 # Dynamic Rendering [![Gem Version](https://badge.fury.io/rb/rails-dynamic-rendering.svg)](https://badge.fury.io/rb/rails-dynamic-rendering) ![CI Badge](https://github.com/tricycle/rails-dynamic-rendering/workflows/RSpec%20Test%20Suite/badge.svg)
