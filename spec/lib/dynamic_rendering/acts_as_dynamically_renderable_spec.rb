@@ -164,7 +164,8 @@ module DynamicRendering
                   {
                     'displayUrl' => 'http://test.host/anonymous?scenario=ok-html',
                     'waitUntil' => 'networkidle2',
-                    viewport: { width: 1400, height: 950 }
+                    viewport: { width: 1400, height: 950 },
+                    userAgent: instance_of(String)
                   }
                 )
                 .and_return(rendered_html)
