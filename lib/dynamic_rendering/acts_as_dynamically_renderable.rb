@@ -18,7 +18,7 @@ module DynamicRendering
           log_level,
           <<~TEXT
             [Dynamic rendering 🔍 ]:
-            • URL: #{request.original_url}"
+            • URL: #{request.original_url}
             • User-Agent: #{request.user_agent}
             • Viewport: #{dynamic_rendering_viewport.inspect}
           TEXT
@@ -27,7 +27,8 @@ module DynamicRendering
         response.body = HtmlRenderer.new(
           response.body,
           dynamic_rendering_viewport,
-          request.original_url
+          request.original_url,
+          request.user_agent
         ).to_s
       end
     end
@@ -62,11 +63,12 @@ module DynamicRendering
     class HtmlRenderer
       DEFAULT_OPTIONS = { 'waitUntil' => 'networkidle2' }
 
-      def initialize(original_response_body, viewport, original_url, options = DEFAULT_OPTIONS)
+      def initialize(original_response_body, viewport, original_url, original_user_agent, options = DEFAULT_OPTIONS)
         @original_response_body = original_response_body
         @viewport = viewport
         @original_url = original_url
         @options = options
+        @original_user_agent = original_user_agent
       end
 
       def to_s
@@ -81,7 +83,8 @@ module DynamicRendering
           response_body_for_processor,
           @options.merge(
             'displayUrl' => @original_url,
-            viewport: @viewport
+            viewport: @viewport,
+            userAgent: @original_user_agent
           )
         )
       end
