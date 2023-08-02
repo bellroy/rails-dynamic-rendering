@@ -129,7 +129,7 @@ module DynamicRendering
 
       private
 
-      JAVASCRIPT_SELECTOR = 'script:not([type]), script[type="text/javascript"]'
+      JAVASCRIPT_SELECTOR = 'script:not([type]), script[type="text/javascript"], script[type="module"]'
 
       def remove_javascript!
         @html.css(JAVASCRIPT_SELECTOR).remove
